@@ -1,0 +1,328 @@
+-----> Starting Kitchen (v1.17.0)
+-----> Cleaning up any prior instances of <default-sbeliakou-centos-73-x86-64-minimal>
+-----> Destroying <default-sbeliakou-centos-73-x86-64-minimal>...
+       Finished destroying <default-sbeliakou-centos-73-x86-64-minimal> (0m0.00s).
+-----> Testing <default-sbeliakou-centos-73-x86-64-minimal>
+-----> Creating <default-sbeliakou-centos-73-x86-64-minimal>...
+       Bringing machine 'default' up with 'virtualbox' provider...
+       ==> default: Checking if box 'sbeliakou/centos-7.3-x86_64-minimal' is up to date...
+       ==> default: Setting the name of the VM: kitchen-task3_database-default-sbeliakou-centos-73-x86-64-minimal_default_1503510649387_83200
+       ==> default: Fixed port collision for 22 => 2222. Now on port 2202.
+       ==> default: Clearing any previously set network interfaces...
+       ==> default: Preparing network interfaces based on configuration...
+           default: Adapter 1: nat
+           default: Adapter 2: hostonly
+       ==> default: Forwarding ports...
+           default: 8080 (guest) => 8090 (host) (adapter 1)
+           default: 22 (guest) => 2202 (host) (adapter 1)
+       ==> default: Booting VM...
+       ==> default: Waiting for machine to boot. This may take a few minutes...
+           default: SSH address: 127.0.0.1:2202
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+           default: 
+           default: Vagrant insecure key detected. Vagrant will automatically replace
+           default: this with a newly generated keypair for better security.
+           default: 
+           default: Inserting generated public key within guest...
+           default: Removing insecure key from the guest if it's present...
+           default: Key inserted! Disconnecting and reconnecting using new SSH key...
+       ==> default: Machine booted and ready!
+       ==> default: Checking for guest additions in VM...
+       ==> default: Setting hostname...
+       ==> default: Configuring and enabling network interfaces...
+           default: SSH address: 127.0.0.1:2202
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+       ==> default: Mounting shared folders...
+           default: /tmp/chef-pkgs => /home/student/workspace/chef_test/chef_repos/cookbooks/task3_database/chef-pkgs
+       ==> default: Machine not provisioned because `--no-provision` is specified.
+       [SSH] Established
+       Vagrant instance <default-sbeliakou-centos-73-x86-64-minimal> created.
+       Finished creating <default-sbeliakou-centos-73-x86-64-minimal> (0m42.06s).
+-----> Converging <default-sbeliakou-centos-73-x86-64-minimal>...
+       Preparing files for transfer
+       Preparing dna.json
+       Resolving cookbook dependencies with Berkshelf 6.3.0...
+       Removing non-cookbook files before transfer
+       Preparing validation.pem
+       Preparing client.rb
+-----> Installing Chef Omnibus (13.3.42)
+       Downloading file:///tmp/chef-pkgs/install.sh to file /tmp/install.sh
+       Trying wget...
+       Trying curl...
+       Download complete.
+       warning: /tmp/chef-pkgs/chef-13.3.42-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+       Preparing...                                                            (100%)#                                 (100%)##                                (100%)###                               (100%)####                              (100%)#####                             (100%)######                            (100%)#######                           (100%)########                          (100%)#########                         (100%)##########                        (100%)###########                       (100%)############                      (100%)#############                     (100%)##############                    (100%)###############                   (100%)################                  (100%)#################                 (100%)##################                (100%)###################               (100%)####################              (100%)#####################             (100%)######################            (100%)#######################           (100%)########################          (100%)#########################         (100%)##########################        (100%)###########################       (100%)############################      (100%)#############################     (100%)##############################    (100%)###############################   (100%)################################  (100%)################################# (100%)################################# [100%]
+       Updating / installing...
+          1:chef-13.3.42-1.el7                                                 (  1%)#                                 (  4%)##                                (  7%)###                               ( 10%)####                              ( 13%)#####                             ( 16%)######                            ( 19%)#######                           ( 22%)########                          ( 25%)#########                         ( 28%)##########                        ( 31%)###########                       ( 34%)############                      ( 37%)#############                     ( 40%)##############                    ( 43%)###############                   ( 46%)################                  ( 49%)#################                 ( 52%)##################                ( 54%)###################               ( 57%)####################              ( 60%)#####################             ( 63%)######################            ( 66%)#######################           ( 69%)########################          ( 72%)#########################         ( 75%)##########################        ( 78%)###########################       ( 81%)############################      ( 84%)#############################     ( 87%)##############################    ( 90%)###############################   ( 93%)################################  ( 96%)################################# ( 99%)################################# [100%]
+       Thank you for installing Chef!
+       Transferring files to <default-sbeliakou-centos-73-x86-64-minimal>
+       Starting Chef Client, version 13.3.42
+       Creating a new client identity for default-sbeliakou-centos-73-x86-64-minimal using the validator key.
+       resolving cookbooks for run list: ["task3_database::default"]
+       Synchronizing Cookbooks:
+         - task3_database (0.1.0)
+         - mysql (8.5.0)
+       Installing Cookbook Gems:
+       Compiling Cookbooks...
+       Converging 4 resources
+       Recipe: task3_database::default
+         * yum_package[net-tools] action install
+           - install version 2.0-0.17.20131004git.el7 of package net-tools
+         * execute[mysql-community-repo] action run
+           - execute yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm -y
+         * mysql_service[foo] action create
+           * mysql_server_installation_package[foo] action install
+             * yum_package[mysql-community-server] action install[2017-08-23T18:52:41+01:00] WARN: yum_package[mysql-community-server] matched multiple Provides for mysql-community-server but we can only use the first match: mysql-community-server. Please use a more specific version.
+       [2017-08-23T18:52:41+01:00] WARN: yum_package[mysql-community-server] matched multiple Provides for mysql-community-server but we can only use the first match: mysql-community-server. Please use a more specific version.
+       
+        - install version 5.7.19-1.el7 of package mysql-community-server
+             * yum_package[perl-Sys-Hostname-Long] action nothing (skipped due to action :nothing)
+             * execute[Initial DB setup script] action nothing (skipped due to action :nothing)
+           
+           * mysql_service_manager_systemd[foo] action create
+             * group[mysql] action create (up to date)
+             * linux_user[mysql] action create (up to date)
+             * service[mysql] action stop (up to date)
+             * service[mysql] action disable
+        - disable service service[mysql]
+             * file[/etc/mysql/my.cnf] action delete (up to date)
+             * file[/etc/my.cnf] action delete
+        - delete file /etc/my.cnf
+             * link[/usr/share/my-default.cnf] action create
+        - create symlink at /usr/share/my-default.cnf to /etc/mysql-foo/my.cnf
+             * directory[/etc/mysql-foo] action create
+        - create new directory /etc/mysql-foo
+        - change mode from '' to '0750'
+        - change owner from '' to 'mysql'
+        - change group from '' to 'mysql'
+             * directory[/etc/mysql-foo/conf.d] action create
+        - create new directory /etc/mysql-foo/conf.d
+        - change mode from '' to '0750'
+        - change owner from '' to 'mysql'
+        - change group from '' to 'mysql'
+             * directory[/var/run/mysql-foo] action create
+        - create new directory /var/run/mysql-foo
+        - change mode from '' to '0755'
+        - change owner from '' to 'mysql'
+        - change group from '' to 'mysql'
+             * directory[/var/log/mysql-foo] action create
+        - create new directory /var/log/mysql-foo
+        - change mode from '' to '0750'
+        - change owner from '' to 'mysql'
+        - change group from '' to 'mysql'
+             * directory[/var/lib/mysql-foo] action create
+        - create new directory /var/lib/mysql-foo
+        - change mode from '' to '0750'
+        - change owner from '' to 'mysql'
+        - change group from '' to 'mysql'
+             * template[/etc/mysql-foo/my.cnf] action create
+        - create new file /etc/mysql-foo/my.cnf
+        - update content in file /etc/mysql-foo/my.cnf from none to 2482a0
+        --- /etc/mysql-foo/my.cnf	2017-08-23 18:54:02.798443274 +0100
+        +++ /etc/mysql-foo/.chef-my20170823-12089-11o26k1.cnf	2017-08-23 18:54:02.798443274 +0100
+        @@ -1 +1,22 @@
+        +# Chef generated my.cnf for instance mysql-foo
+        +
+        +[client]
+        +default-character-set          = utf8
+        +port                           = 3306
+        +socket                         = /var/run/mysql-foo/mysqld.sock
+        +
+        +[mysql]
+        +default-character-set          = utf8
+        +
+        +[mysqld]
+        +user                           = mysql
+        +pid-file                       = /var/run/mysql-foo/mysqld.pid
+        +socket                         = /var/run/mysql-foo/mysqld.sock
+        +port                           = 3306
+        +datadir                        = /var/lib/mysql-foo
+        +log-error                      = /var/log/mysql-foo/error.log
+        +!includedir /etc/mysql-foo/conf.d
+        +
+        +[mysqld_safe]
+        +socket                         = /var/run/mysql-foo/mysqld.sock
+        - change mode from '' to '0600'
+        - change owner from '' to 'mysql'
+        - change group from '' to 'mysql'
+             * bash[foo initial records] action run
+        - execute "bash"  "/tmp/chef-script20170823-12089-aygjro"
+           
+         
+         * mysql_service[foo] action start
+           * mysql_service_manager_systemd[foo] action start
+             * directory[/usr/libexec] action create (up to date)
+             * template[/usr/libexec/mysql-foo-wait-ready] action create
+        - create new file /usr/libexec/mysql-foo-wait-ready
+        - update content in file /usr/libexec/mysql-foo-wait-ready from none to dbaa45
+        --- /usr/libexec/mysql-foo-wait-ready	2017-08-23 18:54:08.821148174 +0100
+        +++ /usr/libexec/.chef-mysql-foo-wait-ready20170823-12089-13jyhkw	2017-08-23 18:54:08.821148174 +0100
+        @@ -1 +1,31 @@
+        +#!/bin/sh
+        +
+        +daemon_pid="$1"
+        +
+        +# Wait for the server to come up or for the mysqld process to disappear
+        +ret=0
+        +while /bin/true; do
+        +        RESPONSE=`/usr/bin/mysqladmin --no-defaults --socket="/var/run/mysql-foo/mysqld.sock" --user=UNKNOWN_MYSQL_USER ping 2>&1`
+        +        mret=$?
+        +        if [ $mret -eq 0 ]; then
+        +            break
+        +        fi
+        +        # exit codes 1, 11 (EXIT_CANNOT_CONNECT_TO_SERVICE) are expected,
+        +        # anything else suggests a configuration error
+        +        if [ $mret -ne 1 -a $mret -ne 11 ]; then
+        +            ret=1
+        +            break
+        +        fi
+        +        # "Access denied" also means the server is alive
+        +        echo "$RESPONSE" | grep -q "Access denied for user" && break
+        +
+        +        # Check process still exists
+        +        if ! /bin/kill -0 $daemon_pid 2>/dev/null; then
+        +            ret=1
+        +            break
+        +        fi
+        +        sleep 1
+        +done
+        +
+        +exit $ret
+        - change mode from '' to '0755'
+        - change owner from '' to 'root'
+        - change group from '' to 'root'
+             * template[/etc/systemd/system/mysql-foo.service] action create
+        - create new file /etc/systemd/system/mysql-foo.service
+        - update content in file /etc/systemd/system/mysql-foo.service from none to 929cdd
+        --- /etc/systemd/system/mysql-foo.service	2017-08-23 18:54:08.829256831 +0100
+        +++ /etc/systemd/system/.chef-mysql-foo20170823-12089-1okqkrf.service	2017-08-23 18:54:08.829256831 +0100
+        @@ -1 +1,17 @@
+        +[Unit]
+        +Description=mysql_service[mysql-foo]
+        +After=syslog.target
+        +After=network.target
+        +
+        +[Service]
+        +Type=simple
+        +User=mysql
+        +Group=mysql
+        +ExecStart=/usr/sbin/mysqld --defaults-file=/etc/mysql-foo/my.cnf --basedir=/usr
+        +ExecStartPost=/usr/libexec/mysql-foo-wait-ready $MAINPID
+        +TimeoutSec=300
+        +PrivateTmp=true
+        +
+        +[Install]
+        +WantedBy=multi-user.target
+        - change mode from '' to '0644'
+        - change owner from '' to 'root'
+        - change group from '' to 'root'
+             * execute[foo systemctl daemon-reload] action run
+        - execute /bin/systemctl daemon-reload
+             * execute[foo systemctl daemon-reload] action nothing (skipped due to action :nothing)
+             * template[/usr/lib/tmpfiles.d/mysql-foo.conf] action create
+        - create new file /usr/lib/tmpfiles.d/mysql-foo.conf
+        - update content in file /usr/lib/tmpfiles.d/mysql-foo.conf from none to b457de
+        --- /usr/lib/tmpfiles.d/mysql-foo.conf	2017-08-23 18:54:08.899193996 +0100
+        +++ /usr/lib/tmpfiles.d/.chef-mysql-foo20170823-12089-16z3pju.conf	2017-08-23 18:54:08.899193996 +0100
+        @@ -1 +1,2 @@
+        +d /var/run/mysql-foo 0755 mysql mysql -
+        - change mode from '' to '0644'
+        - change owner from '' to 'root'
+        - change group from '' to 'root'
+             * service[mysql-foo] action enable
+        - enable service service[mysql-foo]
+             * service[mysql-foo] action start
+        - start service service[mysql-foo]
+           
+         
+         * bash[DBSchema] action run
+           - execute "bash"  "/tmp/chef-script20170823-12089-v1ydl6"
+       
+       Running handlers:
+       Running handlers complete
+       
+       Deprecated features used!
+         rename install_method to new_resource.install_method at 1 location:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service.rb:34:in `installation'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename name to new_resource.name at 3 locations:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service.rb:36:in `installation'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service.rb:50:in `svc_manager'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:112:in `initialize_database'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename service_manager to new_resource.service_manager at 1 location:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service.rb:48:in `svc_manager'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename package_name to new_resource.package_name at 1 location:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_server_installation_package.rb:17:in `block in <class:MysqlServerInstallationPackage>'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename package_version to new_resource.package_version at 1 location:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_server_installation_package.rb:18:in `block (2 levels) in <class:MysqlServerInstallationPackage>'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename package_options to new_resource.package_options at 1 location:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_server_installation_package.rb:19:in `block (2 levels) in <class:MysqlServerInstallationPackage>'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename run_user to new_resource.run_user at 7 locations:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:59:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:67:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:75:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:83:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:91:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:102:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_manager_systemd.rb:73:in `block (2 levels) in <class:MysqlServiceManagerSystemd>'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename run_group to new_resource.run_group at 7 locations:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:60:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:68:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:76:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:84:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:92:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:103:in `block in create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_manager_systemd.rb:74:in `block (2 levels) in <class:MysqlServiceManagerSystemd>'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename include_dir to new_resource.include_dir at 1 location:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:66:in `create_config'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename data_dir to new_resource.data_dir at 2 locations:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:90:in `create_config'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_base.rb:116:in `block in initialize_database'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+         rename instance to new_resource.instance at 2 locations:
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_manager_systemd.rb:54:in `block (2 levels) in <class:MysqlServiceManagerSystemd>'
+           - /tmp/kitchen/cache/cookbooks/mysql/libraries/mysql_service_manager_systemd.rb:59:in `block in <class:MysqlServiceManagerSystemd>'
+          See https://docs.chef.io/deprecations_namespace_collisions.html for further details.
+       
+       Chef Client finished, 25/33 resources updated in 02 minutes 25 seconds
+       Finished converging <default-sbeliakou-centos-73-x86-64-minimal> (2m43.33s).
+-----> Setting up <default-sbeliakou-centos-73-x86-64-minimal>...
+       Finished setting up <default-sbeliakou-centos-73-x86-64-minimal> (0m0.00s).
+-----> Verifying <default-sbeliakou-centos-73-x86-64-minimal>...
+       Loaded tests from test/smoke/default 
+
+Profile: tests from test/smoke/default
+Version: (not specified)
+Target:  ssh://vagrant@127.0.0.1:2202
+
+
+  Service mysql-foo
+[38;5;41m     ✔  should be installed[0m
+[38;5;41m     ✔  should be enabled[0m
+[38;5;41m     ✔  should be running[0m
+  Port 3306
+[38;5;41m     ✔  should be listening[0m
+  File /var/run/mysql-foo/mysqld.sock
+[38;5;41m     ✔  should exist[0m
+  Command mysql
+[38;5;41m     ✔  -uroot -pCh4ng3me -S /var/run/mysql-foo/mysqld.sock --port 3306 -s -e "show databases" stdout should match /task3/[0m
+
+Test Summary: [38;5;41m6 successful[0m, [38;5;9m0 failures[0m, [38;5;247m0 skipped[0m
+       Finished verifying <default-sbeliakou-centos-73-x86-64-minimal> (0m1.83s).
+-----> Destroying <default-sbeliakou-centos-73-x86-64-minimal>...
+       ==> default: Forcing shutdown of VM...
+       ==> default: Destroying VM and associated drives...
+       Vagrant instance <default-sbeliakou-centos-73-x86-64-minimal> destroyed.
+       Finished destroying <default-sbeliakou-centos-73-x86-64-minimal> (0m4.00s).
+       Finished testing <default-sbeliakou-centos-73-x86-64-minimal> (3m31.24s).
+-----> Kitchen is finished. (3m32.59s)

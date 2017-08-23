@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+cookbook "mysql", "~> 8.5.0", path: "../mysql"
+source 'https://supermarket.chef.io'
+
+metadata
